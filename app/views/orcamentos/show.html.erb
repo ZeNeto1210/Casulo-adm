@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Orcamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-color: #f0f0f0; /* Cor de fundo pastel */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333; /* Cor do texto */
+      }
+
+      /* Estilo para botões */
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #fff; /* Cor do texto */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #007bff; /* Azul */
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3; /* Azul escuro */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Orcamento</h1>
+      <p>
+        <strong>Nome:</strong>
+        <%= @orcamento.nome %>
+      </p>
+      <p>
+        <strong>Data de Criação:</strong>
+        <%= @orcamento.created_at.strftime("%d/%m/%Y") %>
+      </p>
+      <p>
+        <strong>Quantidade:</strong>
+        <%= @orcamento.quantidade %>
+      </p>
+      <p>
+        <strong>Valor:</strong>
+        <%= @orcamento.valor %>
+      </p>
+      <%= link_to 'Editar', edit_orcamento_path(@orcamento), class: 'btn btn-primary' %> |
+      <%= link_to 'Voltar', orcamentos_path, class: 'btn btn-primary' %>
+    </div>
+  </body>
+</html>

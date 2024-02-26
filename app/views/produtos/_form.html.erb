@@ -1,0 +1,28 @@
+<!-- app/views/produtos/_form.html.erb -->
+<%= form_with(model: produto, local: true) do |form| %>
+  <% if produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(produto.errors.count, "erro") %> proibiram que este produto fosse salvo:</h2>
+      <ul>
+        <% produto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :codigo %>
+    <%= form.text_field :codigo %>
+  </div>
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= form.label :valor_unitario %>
+    <%= form.text_field :valor_unitario, step: '0.01' %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

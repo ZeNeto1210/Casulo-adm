@@ -1,0 +1,89 @@
+<!-- app/views/clientes/index.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-color: #f0f0f0; /* Cor de fundo pastel */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2; /* Cor de fundo da linha do cabeçalho */
+      }
+
+      tr:nth-child(even) {
+        background-color: #e6e6e6; /* Cor de fundo para linhas pares */
+      }
+
+      .btn {
+        background-color: #ff9999; /* Cor pastel */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #ff6666; /* Cor mais escura para hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Lista de Clientes</h2>
+      <a href="<%= new_cliente_path %>" class="btn">Novo Cliente</a>
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Endereço</th>
+          <th>CNPJ</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+        <% @clientes.each do |cliente| %>
+          <tr>
+            <td><%= cliente.nome %></td>
+            <td><%= cliente.endereco %></td>
+            <td><%= cliente.cnpj %></td>
+            <td><%= cliente.telefone %></td>
+            <td>
+              <%= link_to "Detalhes", cliente_path(cliente), class: "btn" %>
+              <%= link_to "Editar", edit_cliente_path(cliente), class: "btn" %>
+              <%= link_to "Remover", cliente_path(cliente), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <%= link_to "Voltar para a página inicial", root_path, class: "btn" %>
+    </div>
+  </body>
+</html>

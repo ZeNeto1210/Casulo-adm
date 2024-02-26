@@ -1,0 +1,33 @@
+<!-- app/views/orcamentos/_form.html.erb -->
+<%= form_with(model: orcamento, local: true) do |form| %>
+  <% if orcamento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(orcamento.errors.count, "erro") %> proibiram que este orçamento fosse salvo:</h2>
+      <ul>
+        <% orcamento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+  <!-- Removendo os campos CNPJ e Produto -->
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= form.label :quantidade %>
+    <%= form.number_field :quantidade, step: 1 %>
+  </div>
+  <div class="field">
+    <%= form.label :valor %>
+    <%= form.text_field :valor, step: '0.01' %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

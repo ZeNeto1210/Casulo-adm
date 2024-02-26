@@ -1,0 +1,47 @@
+<!-- app/views/home/index.html.erb -->
+<style>
+  body {
+    background-color: #f0f0f0; /* Cor de fundo pastel */
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .jumbotron {
+    background-color: #CFC8C8; /* Cor pastel */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn {
+    background-color: #ff9999; /* Cor pastel */
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: #ff6666; /* Cor mais escura para hover */
+  }
+</style>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Bem-vindo ao Casulo Adm</h1>
+    <p class="lead">Gerencie seus clientes, produtos e orçamentos de forma fácil e eficiente.</p>
+    <div class="btn-group mt-4" role="group" aria-label="Botões de navegação">
+      <%= link_to "Clientes", clientes_path, class: "btn" %>
+      <%= link_to "Produtos", produtos_path, class: "btn" %>
+      <%= link_to "Orçamentos", orcamentos_path, class: "btn" %>
+    </div>
+  </div>
+</div>

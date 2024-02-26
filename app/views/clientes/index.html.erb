@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista de Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-color: #f0f0f0; /* Cor de fundo pastel */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 1200px; /* Largura máxima para uma tela grande, como uma TV */
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333; /* Cor do texto */
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+
+      th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2; /* Cor de fundo da linha do cabeçalho */
+      }
+
+      tr:nth-child(even) {
+        background-color: #e6e6e6; /* Cor de fundo para linhas pares */
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #fff; /* Cor do texto */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-success {
+        background-color: #38c172; /* Verde */
+      }
+
+      .btn-success:hover {
+        background-color: #2cb14e; /* Verde escuro */
+      }
+
+      .btn-primary {
+        background-color: #ff9999; /* Azul */
+      }
+
+      .btn-primary:hover {
+        background-color: #ff6666; /* Azul escuro */
+      }
+
+      /* Media queries para dispositivos móveis */
+      @media screen and (max-width: 767px) {
+        .container {
+          padding: 10px;
+        }
+        .btn {
+          display: block;
+          width: 100%;
+        }
+        table {
+          font-size: 14px;
+        }
+        th, td {
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lista de Clientes</h1>
+      <%= link_to "Home", root_path, class: "btn btn-primary" %>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>CNPJ</th>
+            <th>Telefone</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @clientes.each do |cliente| %>
+            <tr>
+              <td><%= cliente.nome %></td>
+              <td><%= cliente.endereco %></td>
+              <td><%= cliente.cnpj %></td>
+              <td><%= cliente.telefone %></td>
+              <td><%= link_to 'Detalhes', cliente, class: "btn btn-primary" %></td>
+              <td><%= link_to 'Editar', edit_cliente_path(cliente), class: "btn btn-primary" %></td>
+              <td><%= link_to 'Remover', cliente, method: :delete, data: { confirm: 'Tem certeza?' }, class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= link_to "Novo Cliente", new_cliente_path, class: "btn btn-success" %>
+    </div>
+  </body>
+</html>

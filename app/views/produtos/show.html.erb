@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Produto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-color: #f0f0f0; /* Cor de fundo pastel */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        color: #333; /* Cor do texto */
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #fff; /* Cor do texto */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #ff9999; /* Azul */
+      }
+
+      .btn-primary:hover {
+        background-color: #ff6666; /* Azul escuro */
+      }
+
+      .btn-danger {
+        background-color: #dc3545; /* Vermelho */
+      }
+
+      .btn-danger:hover {
+        background-color: #c82333; /* Vermelho escuro */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Produto</h1>
+      <%= render @produto %>
+      <div>
+        <%= link_to "Editar produto", edit_produto_path(@produto), class: "btn btn-primary" %> |
+        <%= link_to "Voltar para produtos", produtos_path, class: "btn btn-primary" %>
+        <%= button_to "Excluir produto", @produto, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </body>
+</html>

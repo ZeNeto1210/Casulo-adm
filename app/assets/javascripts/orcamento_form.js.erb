@@ -1,0 +1,22 @@
+document.addEventListener('DOMContentLoaded', function () {
+var selectCliente = document.getElementById('orcamento_nome');
+var selectDescricao = document.getElementById('orcamento_descricao');
+selectCliente.addEventListener('change', function () {
+var selectedNome = selectCliente.value;
+var selectedCliente = <%= @clientes.to_json.html_safe %>.find(function (cliente) {
+return cliente[0] == selectedNome; // Verificar o nome do cliente
+});
+if (selectedCliente) {
+// Se necessário, faça algo com os dados do cliente selecionado aqui
+}
+});
+selectDescricao.addEventListener('change', function () {
+var selectedDescricao = selectDescricao.value;
+var selectedProduto = <%= @produtos.to_json.html_safe %>.find(function (produto) {
+return produto[0] == selectedDescricao; // Verificar a descrição do produto
+});
+if (selectedProduto) {
+// Se necessário, faça algo com os dados do produto selecionado aqui
+}
+});
+});
